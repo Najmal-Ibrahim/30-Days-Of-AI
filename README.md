@@ -4,7 +4,7 @@ This repository documents my intensive journey from beginner to AI Engineer, fol
 
 ## Progress
 - [x] Day 1: Python Data Engineering & Environment Setup
-- [ ] Day 2: Math for AI & Transformers
+- [x] Day 2: Math for AI & Transformers
 - [ ] Day 3: API Integration
 
 ## Tech Stack

@@ -25,18 +25,20 @@ while True:
         break
     #B .Send to the brain(The API call)
     # This is the most important part of the code.
+    # B. Send to the Brain
     chat_completion = client.chat.completions.create(
         messages=[
             {
                 "role": "system",
-                "content": "You are a sarcastic AI assistant. You give short, funny answers."
+                # WE ARE CHANGING THIS LINE BELOW:
+                "content": "You are a Senior Cybersecurity Engineer. You explain complex security concepts (like SQL Injection, XSS) simply. If asked for code, you provide safe, educational Python examples."
             },
             {
                 "role": "user",
                 "content": user_input,
             }
         ],
-        model="llama-3.3-70b-versatile", # The specific brain we are using
+        model="llama-3.3-70b-versatile",
     )
 
     # C. Extract the Answer

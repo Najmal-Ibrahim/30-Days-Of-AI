@@ -40,9 +40,16 @@ A mathematical calculation to measure similarity between two vectors.
 - **Outcome:** A functional CLI Chatbot that explains complex security concepts (SQL Injection, XSS) with code examples.
 **Terminal Output:**
 ![Day 3 Chatbot Demo][day3_bot_output.png]
+
+### Day 4: LangChain Orchestration & Memory
+**Goal:** Solved the "Amnesia" problem by implementing stateful memory.
+
+- **Tech Stack:** LangChain Community, `ConversationBufferMemory`, Python 3.11.
+- **Challenge:** Fixed a critical dependency conflict (Python 3.14 vs 3.11) by rebuilding the virtual environment.
+- **Outcome:** A conversational agent that retains context across multiple turns (remembers user name and topic).
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face
 - **Hardware:** Local RTX 1080 + Cloud Compute
 
-[def]: day3_bot_output.png

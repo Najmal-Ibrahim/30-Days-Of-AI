@@ -43,3 +43,4 @@ while True:
 
     #Print the result
     print(f"Ai:{response['response']}\n")
+    

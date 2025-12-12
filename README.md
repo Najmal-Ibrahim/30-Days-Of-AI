@@ -48,6 +48,17 @@ A mathematical calculation to measure similarity between two vectors.
 - **Challenge:** Fixed a critical dependency conflict (Python 3.14 vs 3.11) by rebuilding the virtual environment.
 - **Outcome:** A conversational agent that retains context across multiple turns (remembers user name and topic).
 
+### Day 5: RAG (Retrieval Augmented Generation) System
+**Goal:** Build a system that answers questions based on a specific PDF document (Private Knowledge Base).
+
+- **Tech Stack:** `pypdf` (Loading), `sentence-transformers` (Embeddings), `FAISS` (Vector Database), `Llama-3` (Reasoning).
+- **Architecture:** 
+  1. Ingest PDF -> Chunk Text (1000 chars).
+  2. Embed Chunks -> Store in FAISS.
+  3. User Query -> Semantic Search -> Retrieve Top Chunks.
+  4. Generate Answer using Llama-3 + Retrieved Context.
+- **Outcome:** Successfully queried a Cloud Computing/Cyber Law document with accurate citations.
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

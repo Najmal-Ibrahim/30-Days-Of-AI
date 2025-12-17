@@ -42,11 +42,19 @@ A mathematical calculation to measure similarity between two vectors.
 ![Day 3 Chatbot Demo][day3_bot_output.png]
 
 ### Day 4: LangChain Orchestration & Memory
-**Goal:** Solved the "Amnesia" problem by implementing stateful memory.
+**Goal:** Solved the "Amnesia" problem (statelessness) by implementing short-term memory.
 
-- **Tech Stack:** LangChain Community, `ConversationBufferMemory`, Python 3.11.
-- **Challenge:** Fixed a critical dependency conflict (Python 3.14 vs 3.11) by rebuilding the virtual environment.
-- **Outcome:** A conversational agent that retains context across multiple turns (remembers user name and topic).
+- **Tech Stack:** `LangChain Community`, `ConversationBufferMemory`, `Groq`, Python 3.11.
+- **Challenge:** Fixed a critical version conflict (Python 3.14 vs 3.11) by restructuring the Virtual Environment.
+- **Outcome:** The AI now retains context across multiple conversation turns.
+
+**Terminal Output (Proof of Memory):**
+> *User: "My name is Najmal."*
+> *... (conversation continues) ...*
+> *User: "What is my name?"*
+> *AI: "Your name is Najmal."*
+
+![LangChain Memory Output](day4_memory_output.png)
 
 ### Day 5: RAG (Retrieval Augmented Generation) System
 **Goal:** Build a system that answers questions based on a specific PDF document (Private Knowledge Base).
@@ -58,6 +66,24 @@ A mathematical calculation to measure similarity between two vectors.
   3. User Query -> Semantic Search -> Retrieve Top Chunks.
   4. Generate Answer using Llama-3 + Retrieved Context.
 - **Outcome:** Successfully queried a Cloud Computing/Cyber Law document with accurate citations.
+**Terminal Output (Proof of RAG):**
+> *Query: "What is cloud computing"*
+> *Response: "According to the text, cloud computing allows computer users to conveniently rent access..."*
+
+![RAG System Output](day5_rag_output.png)
+
+### Day 6: Multilingual "Hinglish" Tech Support Bot
+**Goal:** Engineer an LLM to speak naturally in "Hinglish" (Hindi + English) for Indian technical contexts.
+
+- **Tech Stack:** Llama-3-70b, LangChain Prompt Templates.
+- **Key Skill:** **Advanced Prompt Engineering** (Persona Injection).
+- **Outcome:** The bot successfully mixes Hindi grammar with English technical terminology (e.g., "SQL Injection", "Infinite Loop") to simulate a native Indian Tech Lead.
+
+**Terminal Output:**
+> *User: "Sir, mere code mein infinite loop aa raha hai..."*
+> *AI: "Arre, infinite loop ka issue hai toh pehle humein uss loop ki condition check karni padegi..."*
+
+![Hinglish Bot Output](day6_output.png)
 
 ## Tech Stack
 - **Languages:** Python

@@ -83,10 +83,28 @@ A mathematical calculation to measure similarity between two vectors.
 > *User: "Sir, mere code mein infinite loop aa raha hai..."*
 > *AI: "Arre, infinite loop ka issue hai toh pehle humein uss loop ki condition check karni padegi..."*
 
-![Hinglish Bot Output](day6_output.png)
+![Hinglish Bot Output][day6_hinglish_output.png]
+
+### Day 7: Multimodal Voice Assistant
+**Goal:** Build a "Jarvis-like" voice interface that listens and speaks.
+
+- **Tech Stack:** 
+  - **Ears:** `SpeechRecognition` + Google STT API.
+  - **Brain:** Llama-3-70b (Groq).
+  - **Mouth:** `gTTS` (Google Text-to-Speech) with Indian English accent.
+- **Outcome:** A hands-free voice assistant that processes speech input and responds with synthesized audio.
+
+**Terminal Output:**
+> *Microphone: "Who created Python?"*
+> *AI (Audio): "Python was created by Guido van Rossum in 1991."*
+
+![Voice AI Log](day7_voice_output.png)
 
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face
 - **Hardware:** Local RTX 1080 + Cloud Compute
 
+
+
+[def]: day6_output.png

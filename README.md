@@ -100,11 +100,23 @@ A mathematical calculation to measure similarity between two vectors.
 
 ![Voice AI Log](day7_voice_output.png)
 
+### Day 8: Autonomous AI Agent (ReAct Pattern)
+**Goal:** Build an agent that can use external tools (Web Search) to answer real-time questions.
+
+- **Tech Stack:** LangChain `AgentExecutor`, `DuckDuckGoSearchRun`, Llama-3-70b.
+- **Key Concept:** **ReAct (Reason + Act)**. The AI autonomously decided to search again when the first query failed.
+- **Outcome:** The Agent successfully retrieved the live Bitcoin price ($86,843) by self-correcting its search strategy.
+
+**Terminal Output (Showing Reasoning Trace):**
+> *Thought: "The search results didn't provide the current price... I should try again."*
+> *Action: Search "bitcoin price today"*
+> *Observation: "$86,843.18 USD"*
+
+![Agent ReAct Log](day8_agent_output.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face
 - **Hardware:** Local RTX 1080 + Cloud Compute
 
 
-
-[def]: day6_output.png

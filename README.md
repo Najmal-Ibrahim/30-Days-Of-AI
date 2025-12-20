@@ -114,6 +114,19 @@ A mathematical calculation to measure similarity between two vectors.
 
 ![Agent ReAct Log](day8_agent_output.png)
 
+### Day 9: "DocuChat" - Full Stack RAG Application
+**Goal:** Build a production-grade Web UI for the RAG system to replace the terminal interface.
+
+- **Tech Stack:** `Streamlit` (Frontend), `LangChain` (Logic), `FAISS` (Vector Store).
+- **Features:** 
+  - Drag-and-drop PDF upload.
+  - Real-time caching (Vector DB builds only once per file).
+  - Session State management for chat history.
+- **Outcome:** A functional web app where users can chat with technical documents (Cloud Computing / Cyber Law) in a browser.
+
+**Web Interface Demo:**
+![Streamlit App](day9_ui_demo.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

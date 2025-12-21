@@ -127,6 +127,16 @@ A mathematical calculation to measure similarity between two vectors.
 **Web Interface Demo:**
 ![Streamlit App](day9_ui_demo.png)
 
+### 🚀 Day 10: Cloud Deployment
+**Goal:** Deploy the RAG application to the public web using CI/CD principles.
+
+- **Platform:** Hugging Face Spaces (Cloud).
+- **Tech:** Docker/Streamlit configuration, Dependency Management (requirements.txt).
+- **Outcome:** The app is live and accessible globally.
+
+🔴 **LIVE DEMO:** [Click here to use DocuChat AI](https://huggingface.co/spaces/Najmalibrahim/docuchat-ai)
+
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

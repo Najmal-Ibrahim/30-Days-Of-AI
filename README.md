@@ -136,6 +136,12 @@ A mathematical calculation to measure similarity between two vectors.
 
 🔴 **LIVE DEMO:** [Click here to use DocuChat AI](https://huggingface.co/spaces/Najmalibrahim/docuchat-ai)
 
+### Day 11: Production Optimization (Latency & Cost)
+**Goal:** Optimize the AI for real-world production constraints (Cost reduction + Perceived Speed).
+
+- **Technique 1: Rolling Context Window:** Implemented `ConversationBufferWindowMemory(k=3)` to keep token usage low and prevent crashes during long conversations.
+- **Technique 2: Streaming Inference:** Used `StreamingStdOutCallbackHandler` to reduce "Time to First Token" (TTFT) from 3s to 0.5s, improving user experience.
+- **Outcome:** A highly efficient bot that forgets irrelevant history and responds instantly.
 
 ## Tech Stack
 - **Languages:** Python

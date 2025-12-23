@@ -143,6 +143,16 @@ A mathematical calculation to measure similarity between two vectors.
 - **Technique 2: Streaming Inference:** Used `StreamingStdOutCallbackHandler` to reduce "Time to First Token" (TTFT) from 3s to 0.5s, improving user experience.
 - **Outcome:** A highly efficient bot that forgets irrelevant history and responds instantly.
 
+### Day 12: "TubeMind" - YouTube Video Summarizer
+**Goal:** Build an AI tool to automate content consumption by extracting and summarizing video transcripts.
+
+- **Tech Stack:** `Streamlit`, `LangChain Community` (YoutubeLoader), `Llama-3-70b`.
+- **Challenges:** Resolved critical library conflicts (`youtube-transcript-api` vs `langchain-core`) by rebuilding the environment and using LangChain's native loaders.
+- **Outcome:** A web app that accepts YouTube URLs, fetches subtitles (even auto-generated ones), and generates structured "Key Takeaway" summaries.
+
+**Interface Demo:**
+![YouTube Summarizer](day12_summary.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

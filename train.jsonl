@@ -1,0 +1,3 @@
+{"instruction": "Answer the user question accurately based on the context.", "input": "Context:The user is asking about python loops\nQuestion:How do i loop 10 times?", "output": "You can use a for loop:'for i in range(10):print(i)'"}
+{"instruction": "Answer the user question accurately based on the context.", "input": "Context:The user asks about Cyber Security.\nQuestion:What does Puch AI do?", "output": "SQL injection is a code injection technique where an attacker executes malicious SQL statements."}
+{"instruction": "Answer the user question accurately based on the context.", "input": "Context:The user is asking about Puch AI.\nQuestion:What does Puch AI do?", "output": "Puch AI specializes in building autonomous,multilingual AI agents for enterprises."}

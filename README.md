@@ -153,6 +153,26 @@ A mathematical calculation to measure similarity between two vectors.
 **Interface Demo:**
 ![YouTube Summarizer](day12_summary.png)
 
+### Day 13: Data Engineering for Fine-Tuning
+**Goal:** Prepare a raw dataset for Supervised Fine-Tuning (SFT) of Llama-3.
+
+- **Tech Stack:** Python, Pandas, JSONL.
+- **Concept:** Converted unstructured Q&A data into the **Alpaca Format** (Instruction/Input/Output) required for training LLMs.
+- **Outcome:** Generated a `train.jsonl` dataset ready for upload to a GPU cluster.
+
+### Day 14: Multi-Agent Orchestration (CrewAI)
+**Goal:** Build a team of autonomous AI agents that collaborate to perform complex research tasks.
+
+- **Tech Stack:** `CrewAI`, `Groq (Llama-3)`, `DuckDuckGo Search`.
+- **Architecture:** 
+  - **Researcher Agent:** Equipped with a custom Python tool to scrape the web for real-time cybersecurity news.
+  - **Writer Agent:** Consumes the research and drafts a viral LinkedIn post.
+  - **Manager:** Orchestrates the sequential process.
+- **Outcome:** The system autonomously identified recent AI security breaches and generated a summarized report without human intervention.
+
+**Agent Reasoning Log:**
+![CrewAI Agents](day14_agents.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

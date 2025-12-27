@@ -173,6 +173,19 @@ A mathematical calculation to measure similarity between two vectors.
 **Agent Reasoning Log:**
 ![CrewAI Agents](day14_agents.png)
 
+### Day 15: Enterprise AI Router (LangGraph)
+**Goal:** Build a stateful system that dynamically routes user requests to specific specialized agents.
+
+- **Tech Stack:** `LangGraph` (State Machine), `LangChain`, `Llama-3`.
+- **Architecture:** 
+  - **Node 1 (Router):** Analyzes the intent of the query (Technical vs. Billing).
+  - **Conditional Edge:** Uses python logic to determine the next step based on the Router's analysis.
+  - **Leaf Nodes:** Specialized prompts for "Tech Support" and "Finance Manager".
+- **Outcome:** The system correctly identified "Blue Screen" as Technical and "Refund" as Billing, routing them to different logic paths automatically.
+
+**Routing Logic Log:**
+![LangGraph Router](day15_router.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

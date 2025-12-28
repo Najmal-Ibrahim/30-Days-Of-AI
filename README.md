@@ -186,6 +186,19 @@ A mathematical calculation to measure similarity between two vectors.
 **Routing Logic Log:**
 ![LangGraph Router](day15_router.png)
 
+### Day 16: Human-in-the-Loop (HITL) Safety Systems
+**Goal:** Implement a "Human Guardrail" to prevent AI from executing risky financial transactions automatically.
+
+- **Tech Stack:** `LangGraph` (State Persistence), `Python` (Logic Gates).
+- **Architecture:** 
+  - **Node 1 (Analyst):** Extracts dollar amounts from user text.
+  - **Conditional Logic:** If Amount > $50, route to **Human Review Node**. Else, route to **Auto-Execute**.
+  - **Human Node:** Pauses execution and waits for `std_input` (Yes/No) before proceeding.
+- **Outcome:** Successfully blocked a $5,000 transaction by injecting a human decision into the AI workflow.
+
+**Safety Log:**
+![HITL Log](day16_hitl.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

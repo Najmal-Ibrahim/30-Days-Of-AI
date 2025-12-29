@@ -199,6 +199,18 @@ A mathematical calculation to measure similarity between two vectors.
 **Safety Log:**
 ![HITL Log](day16_hitl.png)
 
+### Day 17: Multimodal Vision AI
+**Goal:** Enable the AI to process and analyze image inputs (Computer Vision).
+
+- **Tech Stack:** `Groq API`, `Llama-4-Scout` (Vision Model), `Base64 Encoding`.
+- **Architecture:** 
+  - **Encoder:** Converts local image files into Base64 strings.
+  - **Vision Model:** Analyzes the visual data and generates a detailed text description.
+- **Outcome:** The system successfully identified text and code structures within a screenshot.
+
+**Vision Analysis Log:**
+![Vision Log](day17_vision_log.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

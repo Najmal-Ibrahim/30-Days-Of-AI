@@ -211,6 +211,16 @@ A mathematical calculation to measure similarity between two vectors.
 **Vision Analysis Log:**
 ![Vision Log](day17_vision_log.png)
 
+### Day 18: Structured Data Extraction (Vision to JSON)
+**Goal:** Build a pipeline to convert unstructured images (Receipts/Invoices) into structured, database-ready JSON.
+
+- **Tech Stack:** `Llama-4-Vision`, `Base64`, `Python JSON Library`.
+- **Technique:** Used **System Prompt Constraints** to force the LLM to output strict JSON without markdown formatting.
+- **Outcome:** Successfully extracted key fields (Store Name, Date, Total) from an image file and parsed them into Python dictionaries for database entry.
+
+**Extraction Log:**
+![JSON Log](day18_json_log.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face

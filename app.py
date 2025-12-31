@@ -2,100 +2,78 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain.chains import RetrievalQA
- 
-#1.Page Setup 
-st.set_page_config(page_title="DocuChat AI",page_icon="📄")
-st.title("📄 DocuChat: Chat with your PDF")
+from langchain_core.messages import HumanMessage
+# NEW: We use the official LangChain Loader
+from langchain_community.document_loaders import YoutubeLoader
 
-#2.Load Secrets
+# 1. Page Config
+st.set_page_config(page_title="TubeMind AI", page_icon="📺")
+st.title("📺 TubeMind: YouTube Video Summarizer")
+st.subheader("Paste a URL -> Get the Insights.")
+
+# 2. Load Secrets
 load_dotenv()
-groq_api_key=os.environ.get("GROQ_API_KEY")
+groq_api_key = os.environ.get("GROQ_API_KEY")
 
-#3.Sidebar - Settings and Upload
-with st.sidebar:
-    st.header("Upload Document")
-    uploaded_file=st.file_uploader("Upload a PDF",type="pdf")
+# 3. UI Layout
+video_url = st.text_input("Enter YouTube Video URL:")
+summarize_btn = st.button("Generate Summary")
 
-    st.markdown("---")
-    st.write("Powered by **Llama-3** and **Groq**")
-
-#4.Initialize Session State(Memory fro the web app)
-if "message" not in st.session_state:
-    st.session_state.messages =[]#Store chat history
-if "vector_db" not in st.session_state:
-    st.session_state.vector_db=None#Store the brain
-
-#5.The Logic (Cached to run fast)
-@st.cache_resource
-def setup_vector_db(file_path):
-    #this runs only when a new file is uploaded
-    st.write("⚙️ Processing Document...")
-
-    #Load
-    loader=PyPDFLoader(file_path)
-    docs=loader.load()
-
-    #Split
-    text_splitter=RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=200)
-    splits=text_splitter.split_documents(docs)
-
-    #Embed
-    embeddings=HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-l6-v2")
-    vector_db =FAISS.from_documents(splits,embeddings)
-    return vector_db
-
-# 6. Handle File Upload
-if uploaded_file is not None:
-    # Save file temporarily so PyPDFLoader can read it
-    with open("temp.pdf", "wb") as f:
-        f.write(uploaded_file.getbuffer())
-    
-    # Build Database (Only once)
-    if st.session_state.vector_db is None:
-        with st.spinner("Analyzing PDF..."):
-            st.session_state.vector_db = setup_vector_db("temp.pdf")
-        st.success("PDF Loaded! Ask away.")
-
-# 7. Display Chat History
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-
-# 8. Handle User Input
-prompt = st.chat_input("Ask a question about your PDF...")
-
-if prompt:
-    # A. Display User Message
-    with st.chat_message("user"):
-        st.markdown(prompt)
-    st.session_state.messages.append({"role": "user", "content": prompt})
-
-    # B. Generate AI Response
-    if st.session_state.vector_db is not None:
-        with st.chat_message("assistant"):
-            with st.spinner("Thinking..."):
-                # Setup LLM
-                llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama-3.3-70b-versatile")
-                
-                # Setup Chain
-                qa_chain = RetrievalQA.from_chain_type(
-                    llm=llm,
-                    chain_type="stuff",
-                    retriever=st.session_state.vector_db.as_retriever()
-                )
-                
-                # Get Answer
-                response = qa_chain.invoke({"query": prompt})
-                answer = response['result']
-                
-                st.markdown(answer)
-        
-        # Save AI Message
-        st.session_state.messages.append({"role": "assistant", "content": answer})
+if summarize_btn and video_url:
+    if "youtube.com" not in video_url and "youtu.be" not in video_url:
+        st.error("Please enter a valid YouTube URL.")
     else:
-        st.error("Please upload a PDF first!")
+        # Show Thumbnail (Optional visual)
+        try:
+            video_id = video_url.split("v=")[1].split("&")[0]
+            st.image(f"http://img.youtube.com/vi/{video_id}/0.jpg", width=300)
+        except:
+            pass # Ignore thumbnail errors if URL format is weird
+
+        with st.spinner("🎧 Downloading Transcript..."):
+            try:
+                # --- THE MAGIC PART ---
+                # LangChain handles the API calls for us
+                 # We removed 'translation="en"' because it causes errors on some videos.
+            # We also added 'en-GB' and 'auto' to catch more English variants.
+                loader = YoutubeLoader.from_youtube_url(
+                    video_url, 
+                    add_video_info=False,
+                    language=["en", "en-US", "en-GB"], 
+                )
+                docs = loader.load()
+                
+                # Combine text if multiple parts exist
+                transcript_text = "\n".join([doc.page_content for doc in docs])
+                
+                # Success! Show raw text preview
+                with st.expander("View Raw Transcript"):
+                    st.write(transcript_text[:1000] + "...") 
+
+                # 4. The Summarization
+                with st.spinner("🧠 Llama-3 is summarizing..."):
+                    llm = ChatGroq(
+                        groq_api_key=groq_api_key, 
+                        model_name="llama-3.3-70b-versatile"
+                    )
+                    
+                    prompt = f"""
+                    You are an expert Content Creator. Summarize this YouTube video.
+                    
+                    Structure:
+                    1. 🎯 **Main Topic**: One sentence.
+                    2. 🔑 **Key Takeaways**: 5 bullet points.
+                    3. 💡 **Actionable Advice**: What should the viewer do?
+                    
+                    Transcript:
+                    {transcript_text[:15000]}
+                    """
+                    
+                    response = llm.invoke([HumanMessage(content=prompt)])
+                    
+                    st.markdown("### 📝 AI Summary")
+                    st.markdown(response.content)
+
+            except Exception as e:
+                st.error(f"❌ Error: {str(e)}")
+                st.info("Tip: Ensure the video has Closed Captions (CC) enabled.")

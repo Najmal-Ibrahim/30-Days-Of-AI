@@ -147,10 +147,13 @@ A mathematical calculation to measure similarity between two vectors.
 **Goal:** Build an AI tool to automate content consumption by extracting and summarizing video transcripts.
 
 - **Tech Stack:** `Streamlit`, `LangChain Community` (YoutubeLoader), `Llama-3-70b`.
-- **Challenges:** Resolved critical library conflicts (`youtube-transcript-api` vs `langchain-core`) by rebuilding the environment and using LangChain's native loaders.
-- **Outcome:** A web app that accepts YouTube URLs, fetches subtitles (even auto-generated ones), and generates structured "Key Takeaway" summaries.
+- **Architecture:** Local-first application due to YouTube's strict Data Center IP blocking policies.
+- **Outcome:** A functional web app that accepts YouTube URLs, fetches subtitles, and generates structured summaries.
 
-**Interface Demo:**
+**⚠️ Deployment Note:**
+*This tool is designed to run locally. Cloud deployment (Hugging Face) is restricted by YouTube's anti-bot measures against Data Center IPs.*
+
+**Interface Demo (Local Run):**
 ![YouTube Summarizer](day12_summary.png)
 
 ### Day 13: Data Engineering for Fine-Tuning

@@ -44,5 +44,5 @@ while True:
     print(f"AI: {result['result']}")
     
     # Show sources (Proves it read your specific files)
-    source = result['source_documents'][0].metadata['source']
-    print(f"[Source: {source}]\n")
+    sources = set([doc.metadata['source'] for doc in result['source_documents']])
+    print(f"[Sources used: {', '.join(sources)}]\n")

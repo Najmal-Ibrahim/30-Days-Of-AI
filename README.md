@@ -224,6 +224,30 @@ A mathematical calculation to measure similarity between two vectors.
 **Extraction Log:**
 ![JSON Log](day18_json_log.png)
 
+### Days 20-23: "Second Brain" - Persistent Knowledge Base
+**Goal:** Build a local RAG system that ingests an entire directory of mixed files (PDF, Code, Text) and allows persistent querying.
+
+- **Tech Stack:** `ChromaDB` (Persistent Vector Store), `LangChain`, `HuggingFace Embeddings`.
+- **Architecture:** 
+  - **Ingest Pipeline:** Scans a folder -> Detects file types -> Force decodes UTF-8 -> Chunks text -> Saves to Disk.
+  - **Retrieval Engine:** Loads the pre-built DB from disk (0 latency) -> Semantic Search -> Llama-3 Answer Generation.
+- **Outcome:** Successfully created a "Chat with your Data" system that persists across sessions without re-indexing.
+
+**Terminal Output:**
+> *User: "Give me a summary"*
+> *AI: "The provided text discusses powers of police officers... [Source: my_knowledge\notes.txt]"*
+
+### Day 25: Fine-Tuning Llama-3 (Supervised Fine-Tuning)
+**Goal:** Customize a Large Language Model using low-rank adaptation (LoRA) for specialized instruction following.
+
+- **Tech Stack:** `Google Colab (T4 GPU)`, `Unsloth` (Optimized Training), `PyTorch`, `Hugging Face Transformers`.
+- **Technique:** QLoRA (4-bit Quantization + LoRA adapters) to train an 8B parameter model on a free tier GPU.
+- **Data:** Trained on the Alpaca dataset using the Instruction/Input/Output format.
+- **Outcome:** Successfully reduced training loss and performed inference on the fine-tuned model.
+
+**Training Log:**
+![Fine-Tuning Log](day25_finetuning.png)
+
 ## Tech Stack
 - **Languages:** Python
 - **Libraries:** PyTorch, LangChain, Hugging Face
